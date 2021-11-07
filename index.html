@@ -5,9 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      p,li {
+        line-height: 1.5em;
+      }
+      .webvtt {
+          text-decoration: underline wavy;
+      }
+    </style>
   </head>
   <body>
-    <video controls width="540" height="360" poster="firefox-icon.png">
+    <h3>Video &lt;video <em>controls&gt;</em></h3>
+    <!-- subtitle execution works when files are on a server, not locally -->
+    <video controls width="540" height="360" poster="firefox-icon.png" muted>
       <source src="fan.mp4" type="video/mp4" />
       <track
         src="subs.vtt"
@@ -16,6 +26,74 @@
         srclang="en"
         default
       />
+      <track src="captions.vtt" kind="captions" label="English" srclang="en">
     </video>
+    <hr>
+    <h3>Track &lt;track&gt; element</h3>
+    <p>This allows for a <em><abrr class="webvtt" title="Web Video Text Track">WebVTT</abrr></em> file to be included in the markup when adding subtitles, captions, descriptions, chapters is desirable.<br>
+    The following <em>attributes</em> are used within the <strong>&lt;track&gt;</strong> element to execute this functionality.
+<ul>
+    <li><strong>src=""</strong> - is the URL of the .vtt file</li>
+    <li><strong>kind=""</strong> - is the type of displayed text eg. subtitles, captions, chapters, descriptions</li>
+    <li><strong>label=""</strong> - creates an option label (language) in the subtitles controls.</li>
+    <li><strong>srclang="eg. 'en' "</strong> - tells the browser what language the subtitles are in.</li>
+    <li><strong>default</strong> - tells the browser to try this track before the other options. It is the preferred option.</li>
+</ul></p>
+    <br /><br />
+    <!-- This code displays an audio player -->
+    
+<hr>
+    <h3>Audio &lt;audio <em>controls&gt;</em></h3>
+    <audio controls><source src="Skywalker.mp3" type="audio/mp3" /></audio>
+    <p>the <em>&lt;audio&gt;</em> element is used in the same manner as the <em>&lt;video&gt;</em> element and thus utilises the same attributes as video;<br> however, it doesn't accept:
+        <ul>
+            <li><em>width=""</em> and <em>height=""</em> - because the is not video content.</li>
+            <li><em>poster</em> - because there is no visual component.</li>
+        </ul>
+    </p>
+    <hr>
+    <h2>Attributes for &lt;video&gt; and &lt;audio&gt; elements</h2>
+    <ul>
+        <li>
+          <strong>controls</strong> - embeds a HTML video player within the page
+          and provesides start/stop, volume, playback speed etc...control.
+          functionality
+        </li>
+        <li>
+          <strong>width=""</strong> - Gives the video player a specified width.
+          Note: aspect ratio is maintained.
+        </li>
+        <li>
+          <strong>height=""</strong> - Gives the video player a specified height.
+        </li>
+        <li>
+          <strong>poster=""</strong> - Used for a splash screen or advertisement
+          opportunity.
+        </li>
+        <li>
+          <strong>preload=""</strong> - Used for buffering large files, and can be
+          one of three values:
+          <ol>
+            <li><em>none</em> - does not buffer the file.</li>
+            <li><em>auto</em> - buffers the media file.</li>
+            <li><em>metadata</em> - buffers only the metadata of the file.</li>
+          </ol>
+        </li>
+        <li>
+          <strong>autoplay</strong> - causes the video to play automatically upon
+          loading. Not advised to use as people can find this annoying.
+        </li>
+        <li>
+          <strong>loop</strong> - causes the video to automatically restart when
+          it finishes.
+        </li>
+        <li>
+          <strong>muted</strong> - causes the media to play muted by default upon
+          the page loading.
+        </li>
+      </ul>
+    <hr>
+    <h2>The &lt;source&gt; element</h2>
+    <p>Use this element to create compatibility with as many browsers as possible. <br>Different browsers use different file formats and codecs and so a file/codec runing on one browser may not be supported on another. <br>Using the &lt;source&gt; element allows for diffrent formats to be included in the markup and lets selected browser to sift through during loading for a format that it supports.</p>
   </body>
 </html>
